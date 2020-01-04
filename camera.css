@@ -1,0 +1,275 @@
+* {
+    position: relative;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+}
+
+#camerawall {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(#faa98b, #e6aecf, #aeeddd);
+}
+
+/* camera design */
+#camera {
+    width: 130px;
+    height: 130px;
+    border: solid 6px #fff;
+    border-radius: 30px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    perspective: 300px;
+
+    animation:
+        BallUp .4s .8s ease-out both, BallDown .4s 1.2s ease-in forwards, CameraIn .5s 1.6s forwards linear;
+}
+
+@keyframes BallUp {
+    0% {
+        width: 10px;
+        height: 10px;
+        top: 50%;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        width: 10px;
+        height: 10px;
+        top: 10%;
+    }
+}
+
+@keyframes BallDown {
+    0% {
+        top: 10%;
+    }
+
+    100% {
+        top: 50%;
+    }
+}
+
+@keyframes CameraIn {
+    0% {
+        width: 10px;
+        height: 10px;
+    }
+
+    70% {
+        width: 180px;
+        height: 180px;
+    }
+
+    100% {
+        width: 130px;
+        height: 130px;
+    }
+}
+
+/* lense design */
+#lense {
+    width: 80px;
+    height: 80px;
+    border: solid 10px #fff;
+    border-radius: 50%;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    animation: LenseIn .4s 1.7s both;
+}
+@keyframes LenseIn{
+    0%{
+        transform: scale(0);
+    }
+    10%{
+        width: 10px;
+        height: 10px;
+    }
+    100%{
+        transform: scale(100%);
+    }
+}
+/* flash design */
+#flash {
+    width: 15px;
+    height: 15px;
+    background-color: #fff;
+    border-radius: 50%;
+
+    position: absolute;
+    top: 15px;
+    right: 4px;
+    transform: translate(-50%, -50%);
+
+    animation: FlashIn 1s 1.8s both;
+}
+#light{
+    width: 100px;
+    height: 100px;
+    background-color: rgba(255,255,255,.5);
+    border-radius: 50%;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    animation: Light .5s 2.8s both;
+
+}
+@keyframes FlashIn{
+    0%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(100%);
+    }
+}
+@keyframes Light{
+    0%{
+        opacity: 0;
+    }
+    25%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 0;
+    }
+    75%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+/* Photo design */
+
+    #photo{
+        width: 200px;
+        height: 200px;
+        background-color: #ccc;
+        border: solid 10px #fff;
+        border-bottom: solid 30px #fff;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+
+        animation: PhotoOut 1s 3.3s both, PhotoUp 1s 4.5s forwards, ZoomIn 1s 5.8s forwards ;
+
+        overflow: hidden;
+    }
+    
+    @keyframes PhotoOut{
+        0%{
+            opacity: 0;
+            width: 60px;
+            height: 0;
+            border: solid 5px #fff;
+            border-bottom: solid 10px #fff;
+            transform: translate(-50%,0);
+
+            top: 100%;
+        
+        }100%{
+            width: 60px;
+            height: 60px;
+            border: solid 5px #fff;
+            border-bottom: solid 10px #fff;
+            transform: translate(-50%,0);
+
+            top: 100%;
+        }
+    }
+    @keyframes PhotoUp{
+        0%{
+            width: 60px;
+            height: 60px;
+            border: solid 5px #fff;
+            border-bottom: solid 10px #fff;
+            transform: translate(-50%,0) rotateX(0deg);
+
+            top: 100%;
+        }
+        100%{
+            /* background-color: #ccc; */
+            /* border: solid 10px #fff; */
+            /* border-bottom: solid 30px #fff; */
+            width: 200px;
+            height: 200px;
+
+            top: 50%;
+            /* left: 50%; */
+            transform: translate(-50%,-50%) rotateX(360deg);
+            }
+    }
+    @keyframes ZoomIn{
+        0%{
+            width: 200px;
+            height: 200px;
+        }
+        100%{
+            width: 600px;
+            height: 600px;
+            background: #FFF;
+            padding: 20px;
+            padding-bottom: 0;
+        }
+    }
+
+    #photo #imgbox{
+        animation: ImgOut .8s 5s backwards linear ;
+        height: 450px;
+        overflow: hidden;
+
+    }
+    #photo img{
+        width: 100%;
+    }
+    @keyframes ImgOut{
+        0%{opacity: 0;}
+        100%{opacity: 1;}
+    }
+    #text{
+        padding: 5px;
+    }
+    #text p{
+        display: inline-block;
+        font-size: 36px;
+        color: rgb(43, 43, 43);
+        vertical-align: middle;
+        font-family: 'Long Cang', cursive;
+    }
+    
+    #text a{
+        display: inline-block;
+        text-decoration: none;
+        color: cornflowerblue;
+        font-family: 'Indie Flower', cursive;
+        animation: attract .5s 7s both;
+    }
+    @keyframes attract{
+        0%{
+            font-size: 36px;
+        }
+        100%{
+            font-size: 43px;
+        }
+    }
